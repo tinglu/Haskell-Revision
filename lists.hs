@@ -1,3 +1,7 @@
+----------------------------
+-- Sort
+----------------------------
+
 -- Quick sort
 qsort :: [Int] -> [Int]
 qsort [] = []
@@ -37,6 +41,11 @@ msort xs =
 -- Selection sort
 
 
+
+----------------------------
+-- Search
+----------------------------
+
 -- Linear search
 -- search 3 [1,2,3,4]
 -- exp: True
@@ -45,6 +54,7 @@ msort xs =
 search :: Int -> [Int] -> Bool
 search x [] = False
 search x (y:xs) = x == y || search x xs
+
 
 -- Binary search
 -- Since Haskell lists do not provide random access, most list functions and
@@ -88,6 +98,7 @@ setEq xs ys =
     where
         xs' = sort (nub xs)
         ys' = sort (nub ys)
+
 
 -- freqs [2,2,1,3,4,4,4]
 -- exp: [1,2,1,3]
