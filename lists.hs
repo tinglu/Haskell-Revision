@@ -6,7 +6,6 @@ qsort (pivot:others) = (qsort lowers) ++ [pivot] ++ (qsort highers)
           highers = filter (>=pivot) others
 
 
-
 -- Merge sort
 merge :: [Int] -> [Int] -> [Int]
 merge [] xs = xs
@@ -25,3 +24,43 @@ msort xs =
         len = length xs `div` 2
         ls = take len xs
         rs = drop len xs
+
+
+-- Bubble sort
+
+
+-- Insertion sort
+
+
+-- Selection sort
+
+
+
+
+
+
+----------------------------
+-- Some built-in functions
+----------------------------
+
+evens :: Int -> [Int]
+evens n = take n [2,4..]
+
+
+import Data.List
+
+-- setEq [1,2,2] [2,1]
+-- exp: True
+-- setEq [1,2,3] [2,1]
+-- exp: False
+setEq :: [Int] -> [Int] -> Bool
+setEq xs ys =
+    xs' == ys'
+    where
+        xs' = sort (nub xs)
+        ys' = sort (nub ys)
+
+-- freqs [2,2,1,3,4,4,4]
+-- exp: [1,2,1,3]
+freqs :: [Int] -> [Int]
+freqs xs = map length (group $ sort xs)
