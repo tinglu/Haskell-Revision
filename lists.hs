@@ -7,6 +7,8 @@ qsort (pivot:others) = (qsort lowers) ++ [pivot] ++ (qsort highers)
 
 
 -- Merge sort
+-- msort [1,5,9,8,4,7,2,6,3]
+-- exp: [1,2,3,4,5,6,7,8,9]
 merge :: [Int] -> [Int] -> [Int]
 merge [] xs = xs
 merge xs [] = xs
@@ -35,7 +37,34 @@ msort xs =
 -- Selection sort
 
 
+-- Linear search
+-- search 3 [1,2,3,4]
+-- exp: True
+-- search 5 [1,2,3,4]
+-- exp: False
+search :: Int -> [Int] -> Bool
+search x [] = False
+search x (y:xs) = x == y || search x xs
 
+-- Binary search
+-- Since Haskell lists do not provide random access, most list functions and
+-- operations (including length and !!) run in linear time in the length of the
+-- list. So time complexity of O(nlogn), rather than the usual O(logn).
+-- bsearch 3 [1,2,3,5]
+-- exp: True
+-- bsearch 4 [1,2,3,5]
+-- exp: False
+bsearch :: Int -> [Int] -> Bool
+bsearch _ [] = False
+bsearch x [y] = x == y
+bsearch x xs =
+    let mid = (length xs) `div` 2
+        y = xs !! mid
+    in
+        if x == y then True
+        else
+            if x < y then bsearch x (take mid xs)
+            else bsearch x (drop mid xs)
 
 
 
